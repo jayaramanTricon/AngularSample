@@ -1,0 +1,53 @@
+/* You can add global styles to this file, and also import other style files */
+.book-obj > div:not(:first-child) {     //div:not(:first-of-type)
+    padding-left: 30px;
+
+}
+
+.navbar {
+    background-color: #eaecef !important;
+    padding: 10px 0 0 10px !important;
+}
+
+li.nav-item {
+    min-width: 72px;
+    text-align: center;
+ &.active {
+    background-color: #fff;
+    a.nav-link {
+        font-weight: bold;
+    }
+ }
+}
+.avail-style {
+    color: green;
+}
+.not-avail-style {
+    color: red;
+    text-decoration: line-through;
+}
+.missing-style {
+    color: blue;
+    text-decoration: line-through;
+}
+
+.indent- {
+    &-1 {
+        padding-left: 25px;
+    }
+    &-2 {
+        padding-left: 50px;
+    }
+}
+
+.text {
+    &-right {
+        text-align: right;
+    }
+    &-left {
+        text-align: left;
+    }
+    &-center {
+        text-align: center;
+    }
+}

@@ -1,0 +1,113 @@
+<div class="row pt-5">
+    <h2>Directives Examples</h2><br><br><br>
+    
+    <div class="col-12">
+        <h4>Attribute Directives:</h4><br>
+        <h5 class="indent--1"> &#x3c;p appBasicsHighlight&#x3e; Basic Directive &#x3c;/p&#x3e;</h5><br>
+        <div class="indent--2">
+            <p style="color: #fff;" appBasicsHighlight>Basic Directive</p>
+
+            <p style="color: #fff;" appBetterHighlight>Better way Directive</p>
+        </div><br><br>
+
+    </div>
+
+    <div class="col-12">
+        <h4>Structural Directives:</h4><br>
+        <!-- *ngIf -->
+        <h5 class="indent--1">*ngIf - "true" & "false" </h5>
+        <p class="indent--2" *ngIf="true">Sample Text display1 - *ngIf '{{true}}'</p>
+        <p class="indent--2" *ngIf="false">Sample Text display2 - *ngIf '{{false}}'</p><br>
+
+
+        <h5 class="indent--1">*ngFor & [ngSwitch] - *ngSwitchCase & [ngStyle]</h5>
+
+        <div class="indent--2">
+            <!-- *ngIf with else -->
+            <div *ngIf="books; then bookAvailable else noBooksAvailable"> <!-- *ngIf="books; else noBooksAvailable" -->
+                Books Exists!
+            </div>
+
+            <ng-template #bookAvailable>
+                <div>Books Available! </div><br/>
+
+                <div *ngFor="let obj of books; let i = index;">  
+                <!-- *ngFor="let obj of books; index as i; even as e; odd as o;"" -->
+                    
+                    <div [ngSwitch]="obj.bookstatus">
+                        <div>Book-{{i + 1}} </div>
+
+                        <div class="book-obj" [ngClass]="{ 'not-avail-style': obj.bookstatus=='Not Available', 'avail-style': obj.bookstatus=='Available', 'missing-style': '' }">              
+                            <div>Name: {{obj.bookname}}</div>
+                            <div>Id: {{obj.bookid}}</div>
+                            <div>Author: {{obj.author}}</div>
+                            <div>Status: {{obj.bookstatus}}</div>
+                            <div>Category: {{obj.category}}</div><br>
+                        </div>
+                    </div>
+                </div> <br><br>
+            </ng-template>
+
+            <ng-template #noBooksAvailable>
+            No books available
+            </ng-template>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <h5 class="indent--1">*ngFor & [ngSwitch] - *ngSwitchCase & [ngStyle]</h5>
+
+        <div class="indent--2">
+            <!-- *ngIf with else -->
+            <div *ngIf="books; then bookAvailable else noBooksAvailable"> <!-- *ngIf="books; else noBooksAvailable" -->
+                Books Exists!
+            </div>
+
+            <ng-template #bookAvailable>
+                <div>Books Available! </div><br/>
+
+                <div *ngFor="let obj of books; let i = index;">  
+                <!-- *ngFor="let obj of books; index as i; even as e; odd as o;"" -->
+                    
+                    <div [ngSwitch]="obj.bookstatus">
+                        <div>Book-{{i + 1}} </div>
+
+                        <div class="book-obj" *ngSwitchCase="'Available'" [ngStyle]="{'color': 'green'}">              
+                            <div>Name: {{obj.bookname}}</div>
+                            <div>Id: {{obj.bookid}}</div>
+                            <div>Author: {{obj.author}}</div>
+                            <div>Status: {{obj.bookstatus}}</div>
+                            <div>Category: {{obj.category}}</div><br>
+                        </div>
+
+                        <div class="book-obj" *ngSwitchCase="'Not Available'" [ngStyle]="{'text-decoration': 'line-through', 'color': 'red'}">              
+                            <div>Name: {{obj.bookname}}</div>
+                            <div>Id: {{obj.bookid}}</div>
+                            <div>Author: {{obj.author}}</div>
+                            <div>Status: {{obj.bookstatus}}</div>
+                            <div>Category: {{obj.category}}</div><br>
+                        </div>
+                        
+                        <div class="book-obj" *ngSwitchDefault>
+                            <div>Name: {{obj.bookname}}</div>
+                            <div>Id: {{obj.bookid}}</div>
+                            <div>Author: {{obj.author}}</div>
+                            <div>Status: {{obj.bookstatus}}</div>
+                            <div>Category: {{obj.category}}</div><br>
+                        </div>
+                    </div>
+                </div> <br><br>
+            </ng-template>
+
+            <ng-template #noBooksAvailable>
+            No books available
+            </ng-template>
+        </div><br><br>
+        
+    </div>
+    
+    <div class="col-12 text-right">
+        <button class="btn btn-success" (click)="gotoNext()">Go Next</button>
+    </div>
+
+</div>
